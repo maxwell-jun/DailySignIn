@@ -6,9 +6,9 @@ if [ ! -e `which cron` ];then
 fi
 if [ ! -e "/etc/cron.d/github_daily.cron" ];then
     `touch /etc/cron.d/github_daily.cron`
+    echo '00 12 * * * echo `date +%Y%m%d-%H%M%S` >> $basepath/daily'>> /etc/cron.d/github_daily.cron
 fi
 if [[ ! -e "$basepath/daily" ]];then
     `touch $basepath/daily`
 fi
-echo '00 12 * * * echo `date +%Y%m%d-%H%M%S` >> $basepath/daily'>> /etc/cron.d/github_daily.cron
-`service crond restart`
+`service cron restart`

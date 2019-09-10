@@ -8,3 +8,5 @@ echo '00 12 * * * echo `date +%Y%m%d-%H%M%S` >> '$basepath/daily' && cd '$basepa
 if [[ ! -e "$basepath/daily" ]];then
     `touch $basepath/daily`
 fi
+systemctl restart crond 
+chkconfig crond on
